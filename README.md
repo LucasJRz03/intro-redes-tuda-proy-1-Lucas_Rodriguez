@@ -30,15 +30,19 @@ Para evitar que un cliente bloquee a los demás, el servidor maneja la concurren
 ### Ejemplos de cómo ejecutar el servidor y el cliente. 
 
 Debes tener minimo 2 VMs, una va a ser el 'servidor' y la otra el 'cliente'
+
 **Paso 1: Iniciar el servidor**
 El servidor debe ejecutarse primero para que el puerto quede a la escucha. En la terminal (en VM1) vas a ejecutar: 
-`bash
-python3 proy-1-srv-tcp.py`
+__bash__
+
+`python3 proy-1-srv-tcp.py`
 
 **Paso 2: Iniciar el cliente**
-En la otra terminal (desde VM2),ejecutar: 
-`bash
-python3 proy-1-cli-tcp.py`
+
+En la otra terminal (desde VM2), ejecutar: 
+__bash__
+
+`python3 proy-1-cli-tcp.py`
 
 **Paso 3: Uso de la terminal**
 Una vez conectado, el cliente interactúa enviando comandos al servidor y mostrando la respuesta recibida
