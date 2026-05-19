@@ -32,20 +32,45 @@ Para evitar que un cliente bloquee a los demás, el servidor maneja la concurren
 Debes tener minimo 2 VMs, una va a ser el 'servidor' y la otra el 'cliente'
 
 **Paso 1: Iniciar el servidor**
+
 El servidor debe ejecutarse primero para que el puerto quede a la escucha. En la terminal (en VM1) vas a ejecutar: 
 __bash__
-
-`python3 proy-1-srv-tcp.py`
+(```python3 proy-1-srv-tcp.py```)
 
 **Paso 2: Iniciar el cliente**
 
-En la otra terminal (desde VM2), ejecutar: 
+En la otra terminal (desde VM2), ejecutar:
 __bash__
+(```python3 proy-1-cli-tcp.py```)
 
-`python3 proy-1-cli-tcp.py`
-
+Una vez ejecutado, se debería conectar y mostrarte los siguientes mensajes: 
+(```Conectado al servidor {HOST}/{PORT}```)
+(```Comandos disponibles: ls, pwd,cat <archivo>, exit```)
+(```Escribir_Comando>``)_
 **Paso 3: Uso de la terminal**
-Una vez conectado, el cliente interactúa enviando comandos al servidor y mostrando la respuesta recibida
 
+Una vez conectado, el cliente interactúa enviando comandos al servidor y mostrando la respuesta recibida. Por ejemplo: 
+__bash__
+(```Escribir_Comando> pwd```)
+deberías ver algo cómo 
+(```/home/usuario```)
 
+## 3. Diagrama de Flujo de Datos
 
+[ CLIENTE (VM2) ]                                     [ SERVIDOR (VM1) ]
+         |                                                      |
+         | --- (TCP Connect) ---------------------------------> |  socket() -> bind() -> listen()
+         |                                                      |  accept() [Bloqueado]
+         | <--- (Conexión Aceptada) --------------------------- |  ¡Conexión establecida!
+         |                                                      |  --> Crea un HILO nuevo
+         |                                                      |      para este cliente.
+         |                                                      |
+    while True:                                             while True:
+         | -- 1. Envía comando crudo (bytes) -------------> |    |
+         |                                                  |    |-- 2. recv() -> decode() -> strip()
+         |                                                  |    |-- 3. Procesa (ls, pwd, cat, exit)
+         |                                                  |    |-- 4. Genera respuesta
+         |                                                  |    |
+         | <- 5. Recibe respuesta (bytes) ----------------- | <--| conn.send()
+         |
+    (Muestra texto en pantalla)
