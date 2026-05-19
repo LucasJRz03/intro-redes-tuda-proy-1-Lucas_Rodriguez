@@ -57,6 +57,7 @@ deberías ver algo cómo
 
 ## 3. Diagrama de Flujo de Datos
 
+```text
 [ CLIENTE (VM2) ]                                     [ SERVIDOR (VM1) ]
          |                                                      |
          | --- (TCP Connect) ---------------------------------> |  socket() -> bind() -> listen()
@@ -74,3 +75,4 @@ deberías ver algo cómo
          | <- 5. Recibe respuesta (bytes) ----------------- | <--| conn.send()
          |
     (Muestra texto en pantalla)
+```
