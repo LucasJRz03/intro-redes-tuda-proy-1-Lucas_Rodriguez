@@ -8,7 +8,7 @@ def iniciar_cliente():
 
     try:
         cliente.connect((HOST, PORT))
-        print(f"Conectado al servidor {HOST}/{PORT}")
+        print(f"\nConectado al servidor {HOST}:{PORT}")
         print("Comandos disponibles: ls,pwd, cat<archivo>, exit")
 
         while True:

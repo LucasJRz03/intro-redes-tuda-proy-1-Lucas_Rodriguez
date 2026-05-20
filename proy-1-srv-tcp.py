@@ -6,7 +6,7 @@ HOST = '0.0.0.0'
 PORT = 5500
 
 def manejar_cliente(conn, addr):
-    print(f"Cliente conectado desde {addr}")
+    print(f"\nCliente conectado desde {addr}")
 
     try:
         while True:
