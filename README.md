@@ -41,6 +41,7 @@ El shell remoto soporta los siguientes comandos tras una autenticación exitosa:
 *`ls -lh`: Combinado con `-l`, altera la representación numérica del tamaño del archivo a un formato comprensible por humanos (KB, MB, GB, etc.) para facilitar su lectura.
 *`cat <archivo>`: Muestra el contenido de un archivo de texto específico.
 *`exit`: Cierra la sesión actual, informando al servidor y finalizando la conexión del cliente.
+
 ---
 
 ### 4. Ejemplos de cómo ejecutar el servidor y el cliente. 
