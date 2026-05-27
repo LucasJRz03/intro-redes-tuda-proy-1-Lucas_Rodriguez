@@ -8,7 +8,7 @@ PORT = 5500
 
 #BD
 USUARIO_VALIDO = {
-   "admin": "root1",
+   "admin": "root123",
    "usuario": "123456"
 }
 
@@ -16,7 +16,7 @@ def size_readable(bytes_size):
    """Convierte bytes a un formato legible (KB, MB, etc.)"""
    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
       if bytes_size < 1024.0:
-         return f"{bytes_size:.1f}{unit}B" if unit else f"{bytes_size}{unit}B"
+         return f"{bytes_size:.1f}{unit}"
       bytes_size /= 1024.0
    return f"{bytes_size:.1f}YB"
 
@@ -67,12 +67,6 @@ def manejar_cliente(conn, addr):
                cat <archivo>      : Muestra el contenido de un archivo de texto.
                exit               : Cierra la sesión y desconecta el cliente.
                """
-
-            
-
-            if shell_r == 'exit':
-               conn.send("[INFO] Cerrando conexión...".encode('utf-8'))
-               break
          
             elif shell_r == 'pwd':
                respuesta = os.getcwd()
@@ -90,7 +84,7 @@ def manejar_cliente(conn, addr):
                else:
                   respuesta = "[ERROR] Uso incorrecto. Sintaxis: mkdir <nombre_directorio>"
                   
-            elif shell_r() == 'ls':
+            elif shell_r == 'ls':
                # Procesar argumentos de ls
                flags = [p for p in partes_sh[1:] if p.startswith('-')]
                rutas = [p for p in partes_sh[1:] if not p.startswith('-')]
