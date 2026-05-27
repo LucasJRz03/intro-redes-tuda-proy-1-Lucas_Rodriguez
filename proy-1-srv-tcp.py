@@ -6,7 +6,7 @@ import datetime
 HOST = '0.0.0.0'
 PORT = 5500
 
-#BD
+# BD de usuario (prueba)
 USUARIO_VALIDO = {
    "admin": "root123",
    "usuario": "123456"
@@ -40,6 +40,7 @@ def manejar_cliente(conn, addr):
         conn.send("AUTH_OK".encode('utf-8'))
         print(f"[AUTH] {addr} autenticado exitosamente como '{usuario}'.")
       #---------------------- 
+      
       # --- Fase del Shell ---
         while True:
             comando = conn.recv(1024).decode('utf-8').strip()
