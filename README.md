@@ -32,14 +32,23 @@ Para evitar que un cliente bloquee a los demás, el servidor maneja la concurren
 
 ### 3. Comandos Disponibles 
 El shell remoto soporta los siguientes comandos tras una autenticación exitosa: 
+
 *`help`: Muestra un listado de los comandos disponibles y su forma de uso.
+
 *`pwd`: Imprime el directorio de trabajo actual.
+
 *`mkdir <nombre>`: Crea un nuevo directorio en la ruta actual.
+
 *`ls [ruta] [-l] [-lh]`: Lista el contenido de un directorio. Soporta el pasaje de parámetros para alterar su comportamiento:
+
 *`ls`: Imprime únicamente los nombres de directorios y archivos. Se le puede especificar una ruta (ej. `ls /home`).
+
 *`ls -l`: Imprime la salida en un formato tabular y detallado (tipo, tamaño en bytes, fecha de modificación y nombre).
+
 *`ls -lh`: Combinado con `-l`, altera la representación numérica del tamaño del archivo a un formato comprensible por humanos (KB, MB, GB, etc.) para facilitar su lectura.
+
 *`cat <archivo>`: Muestra el contenido de un archivo de texto específico.
+
 *`exit`: Cierra la sesión actual, informando al servidor y finalizando la conexión del cliente.
 
 ---
